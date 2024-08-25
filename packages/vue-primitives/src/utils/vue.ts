@@ -2,7 +2,7 @@ import type { Ref } from 'vue'
 
 type SetRef<T> = (el: T | undefined) => void
 
-export function forwardRef<T = HTMLElement>(elRef: Ref<T>, elRefs?: Array<SetRef<T>>) {
+export function forwardRef<T = HTMLElement>(elRef: Ref<T>) {
   let rawRef: T | undefined
   function setRef(nodeRef: any) {
     const node = nodeRef ? nodeRef.$el : undefined
@@ -12,11 +12,24 @@ export function forwardRef<T = HTMLElement>(elRef: Ref<T>, elRefs?: Array<SetRef
 
     elRef.value = node
     rawRef = node
+  }
 
-    if (elRefs) {
-      for (const set of elRefs) {
-        set(node)
-      }
+  return setRef
+}
+
+export function useComposedRefs<T = HTMLElement>(refs: Array<SetRef<T>>) {
+  let rawRef: T | undefined
+
+  function setRef(nodeRef: any) {
+    const node = nodeRef ? nodeRef.$el : undefined
+
+    if (node === rawRef)
+      return
+
+    rawRef = node
+
+    for (const set of refs) {
+      set(node)
     }
   }
 

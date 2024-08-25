@@ -2,7 +2,7 @@
 import { shallowRef, useAttrs } from 'vue'
 import { PopperAnchor } from '../popper/index.ts'
 import Primitive from '../primitive/Primitive.vue'
-import { composeEventHandlers, forwardRef } from '../utils/vue.ts'
+import { composeEventHandlers, forwardRef, useComposedRefs } from '../utils/vue.ts'
 import { isFunction } from '../utils/is.ts'
 import { usePopoverContext } from './Popover.ts'
 import type { PopoverTriggerProps } from './PopoverTrigger.ts'
@@ -20,9 +20,14 @@ const attrs = useAttrs()
 const context = usePopoverContext()
 
 const $el = shallowRef<HTMLButtonElement>()
-const farwardedRef = forwardRef($el, [((v) => {
-  context.triggerRef.current = v
-})])
+const farwardedRef = useComposedRefs<HTMLButtonElement>([
+  (v) => {
+    $el.value = v
+  },
+  (v) => {
+    context.triggerRef.current = v
+  },
+])
 
 const onClick = composeEventHandlers((event) => {
   if (isFunction(attrs.onClick))
@@ -36,16 +41,9 @@ defineExpose({
 
 <template>
   <Primitive
-    v-if="context.hasCustomAnchor.value"
-    :ref="farwardedRef"
-    :as="as"
-    :as-child="props.asChild"
-    type="button"
-    aria-haspopup="dialog"
-    :aria-expanded="context.open.value"
-    :aria-controls="context.contentId"
-    :data-state="getState(context.open.value)"
-    v-bind="{
+    v-if="context.hasCustomAnchor.value" :ref="farwardedRef" :as="as" :as-child="props.asChild" type="button"
+    aria-haspopup="dialog" :aria-expanded="context.open.value" :aria-controls="context.contentId"
+    :data-state="getState(context.open.value)" v-bind="{
       ...attrs,
       onClick,
     }"
@@ -54,14 +52,8 @@ defineExpose({
   </Primitive>
   <PopperAnchor v-else as-child>
     <Primitive
-      :ref="farwardedRef"
-      :as="as"
-      :as-child="props.asChild"
-      type="button"
-      aria-haspopup="dialog"
-      :aria-expanded="context.open.value"
-      :aria-controls="context.contentId"
-      :data-state="getState(context.open.value)"
+      :ref="farwardedRef" :as="as" :as-child="props.asChild" type="button" aria-haspopup="dialog"
+      :aria-expanded="context.open.value" :aria-controls="context.contentId" :data-state="getState(context.open.value)"
       v-bind="{
         ...attrs,
         onClick,
