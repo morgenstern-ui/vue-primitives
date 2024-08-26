@@ -12,7 +12,6 @@ defineOptions({
 })
 
 const props = defineProps<PopoverContentProps>()
-const emit = defineEmits<PopoverContentTypeEmits>()
 
 const $el = shallowRef<HTMLElement>()
 const forwardedRef = forwardRef($el)
@@ -32,13 +31,6 @@ defineExpose({
   <Comp
     v-if="isPresent"
     :ref="forwardedRef"
-    @open-auto-focus="emit('openAutoFocus', $event)"
-    @close-auto-focus="emit('closeAutoFocus', $event)"
-    @escape-keydown="emit('escapeKeydown', $event)"
-    @pointerdown-outside="emit('pointerdownOutside', $event)"
-    @focus-outside="emit('focusOutside', $event)"
-    @interact-outside="emit('interactOutside', $event)"
-    @dismiss="emit('dismiss')"
   >
     <slot />
   </Comp>

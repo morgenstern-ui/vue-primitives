@@ -3,15 +3,13 @@ import { shallowRef } from 'vue'
 import type { FocusOutsideEvent, PointerdownOutsideEvent } from '../dismissable-layer/index.ts'
 import { forwardRef } from '../utils/vue.ts'
 import { usePopoverContext } from './Popover.ts'
-import type { PopoverContentTypeEmits, PopoverContentTypeProps } from './PopoverContent.ts'
 import PopoverContentImpl from './PopoverContentImpl.vue'
+import type { PopoverContentNonModal } from './PopoverContentNonModal.ts'
 
 defineOptions({
   name: 'PopoverContentNonModal',
 })
-
-const props = defineProps<PopoverContentTypeProps>()
-const emit = defineEmits<PopoverContentTypeEmits>()
+const emit = defineEmits<PopoverContentNonModal>()
 
 const $el = shallowRef<HTMLElement>()
 const forwardedRef = forwardRef($el)
@@ -70,17 +68,11 @@ defineExpose({
 <template>
   <PopoverContentImpl
     :ref="forwardedRef"
-    v-bind="props"
     :trap-focus="false"
     :disable-outside-pointer-events="false"
-    @open-auto-focus="emit('openAutoFocus', $event)"
     @close-auto-focus="onCloseAutoFocus "
 
     @interact-outside="interactOutside"
-    @escape-keydown="emit('escapeKeydown', $event)"
-    @pointerdown-outside="emit('pointerdownOutside', $event)"
-    @focus-outside="emit('focusOutside', $event)"
-    @dismiss="emit('dismiss')"
   >
     <slot />
   </PopoverContentImpl>
