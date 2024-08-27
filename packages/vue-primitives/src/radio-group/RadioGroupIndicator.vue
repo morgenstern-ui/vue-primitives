@@ -3,7 +3,7 @@ import { shallowRef } from 'vue'
 import { Primitive } from '../primitive/index.ts'
 import { usePresence } from '../presence/index.ts'
 import { forwardRef } from '../utils/vue.ts'
-import { getState, useRadioContext } from './RadioRoot.ts'
+import { getState, useRadioContext } from './Radio.ts'
 import type { RadioGroupIndicatorProps } from './RadioGroupIndicator.ts'
 
 defineOptions({

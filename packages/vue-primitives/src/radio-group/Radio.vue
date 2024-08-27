@@ -2,7 +2,7 @@
 import { computed, shallowRef } from 'vue'
 import { Primitive } from '../primitive/index.ts'
 import { composeEventHandlers, forwardRef } from '../utils/vue.ts'
-import { type ClickEvent, type RadioRootEmits, type RadioRootProps, getState, provideRadioContext } from './RadioRoot.ts'
+import { type ClickEvent, type RadioEmits, type RadioProps, getState, provideRadioContext } from './Radio.ts'
 import BubbleInput from './BubbleInput.vue'
 
 defineOptions({
@@ -10,12 +10,12 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<RadioRootProps>(), {
+const props = withDefaults(defineProps<RadioProps>(), {
   as: 'button',
   value: 'on',
   checked: false,
 })
-const emit = defineEmits<RadioRootEmits>()
+const emit = defineEmits<RadioEmits>()
 const $el = shallowRef<HTMLButtonElement>()
 const forwardedRef = forwardRef($el)
 

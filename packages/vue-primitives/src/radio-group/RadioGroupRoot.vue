@@ -5,19 +5,19 @@ import { useControllableState } from '../hooks/index.ts'
 import { Primitive } from '../primitive/index.ts'
 import { RovingFocusGroupRoot } from '../roving-focus/index.ts'
 import { forwardRef } from '../utils/vue.ts'
-import { type RadioGroupEmits, type RadioGroupProps, provideRadioGroupContext } from './RadioGroup.ts'
+import { type RadioGroupRootEmits, type RadioGroupRootProps, provideRadioGroupContext } from './RadioGroupRoot.ts'
 
 defineOptions({
   name: 'RadioGroup',
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<RadioGroupProps>(), {
+const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   disabled: false,
   required: false,
   loop: true,
 })
-const emit = defineEmits<RadioGroupEmits>()
+const emit = defineEmits<RadioGroupRootEmits>()
 const $el = shallowRef<HTMLElement>()
 const forwardedRef = forwardRef($el)
 

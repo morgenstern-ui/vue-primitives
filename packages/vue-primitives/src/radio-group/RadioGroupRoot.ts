@@ -2,7 +2,7 @@ import type { Ref } from 'vue'
 import { createContext } from '../hooks/index.ts'
 import type { RovingFocusGroupRootProps } from '../roving-focus/index.ts'
 
-export interface RadioGroupProps {
+export interface RadioGroupRootProps {
   name?: string
   required?: boolean
   disabled?: boolean
@@ -14,7 +14,7 @@ export interface RadioGroupProps {
 }
 
 // eslint-disable-next-line ts/consistent-type-definitions
-export type RadioGroupEmits = {
+export type RadioGroupRootEmits = {
   'update:value': [value: string]
 }
 

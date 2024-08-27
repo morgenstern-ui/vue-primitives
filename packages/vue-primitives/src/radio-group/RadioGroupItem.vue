@@ -2,9 +2,9 @@
 import { computed, onBeforeUnmount, onMounted, shallowRef } from 'vue'
 import { RovingFocusGroupItem } from '../roving-focus/index.ts'
 import { composeEventHandlers, forwardRef } from '../utils/vue.ts'
-import { useRadioGroupContext } from './RadioGroup.ts'
+import { useRadioGroupContext } from './RadioGroupRoot.ts'
 import { ARROW_KEYS, type RadioGroupItemEmits, type RadioGroupItemProps } from './RadioGroupItem.ts'
-import RadioRoot from './RadioRoot.vue'
+import Radio from './Radio.vue'
 
 defineOptions({
   name: 'RadioGroupItem',
@@ -76,7 +76,7 @@ defineExpose({
     :focusable="!isDisabled"
     :active="checked"
   >
-    <RadioRoot
+    <Radio
       :ref="forwardedRef"
       :checked="checked"
       :required="context.required()"
@@ -89,6 +89,6 @@ defineExpose({
       @update:checked="onCheck"
     >
       <slot />
-    </RadioRoot>
+    </Radio>
   </RovingFocusGroupItem>
 </template>
