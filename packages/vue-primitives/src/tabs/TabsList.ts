@@ -1,6 +1,5 @@
-import type { PrimitiveProps } from '../primitive/index.ts'
 import type { RovingFocusGroupProps } from '../roving-focus/index.ts'
 
-export interface TabsListProps extends PrimitiveProps {
+export interface TabsListProps {
   loop?: RovingFocusGroupProps['loop']
 }

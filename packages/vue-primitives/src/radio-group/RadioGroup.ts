@@ -1,9 +1,8 @@
 import type { Ref } from 'vue'
 import { createContext } from '../hooks/index.ts'
-import type { PrimitiveProps } from '../primitive/index.ts'
 import type { RovingFocusGroupProps } from '../roving-focus/index.ts'
 
-export interface RadioGroupProps extends PrimitiveProps {
+export interface RadioGroupProps {
   name?: string
   required?: boolean
   disabled?: boolean

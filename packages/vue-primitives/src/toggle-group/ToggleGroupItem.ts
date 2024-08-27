@@ -1,7 +1,6 @@
-import type { PrimitiveProps } from '../primitive/index.ts'
 import type { ToggleProps } from '../toggle/index.ts'
 
-export interface ToggleGroupItemProps extends PrimitiveProps {
+export interface ToggleGroupItemProps {
   pressed?: ToggleProps['pressed']
 
   /**
