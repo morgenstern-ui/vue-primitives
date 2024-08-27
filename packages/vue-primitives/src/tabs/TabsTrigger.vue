@@ -14,7 +14,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<TabsTriggerProps>(), {
   as: 'button',
-  disabled: false,
+  disabled: undefined,
 })
 const emit = defineEmits<TabsTriggerEmits>()
 const $el = shallowRef<HTMLElement>()

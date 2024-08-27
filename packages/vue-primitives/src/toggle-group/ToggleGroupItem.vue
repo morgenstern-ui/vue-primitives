@@ -10,7 +10,9 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = defineProps<ToggleGroupItemProps>()
+const props = withDefaults(defineProps<ToggleGroupItemProps>(), {
+  disabled: undefined,
+})
 
 const context = useToggleGroupContext('ToggleGroupItem')
 const pressed = computed(() => context.value.value?.includes(props.value))
@@ -20,7 +22,7 @@ const typeProps = computed(() => {
   if (context.type() === 'single') {
     return {
       'role': 'radio',
-      'aria-checked': props.pressed,
+      'aria-checked': pressed.value,
       'aria-pressed': undefined,
     }
   }

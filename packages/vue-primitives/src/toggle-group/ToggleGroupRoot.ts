@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import type { RovingFocusGroupProps } from '../roving-focus/index.ts'
+import type { RovingFocusGroupRootProps } from '../roving-focus/index.ts'
 import { createContext } from '../hooks/index.ts'
 
 export type ToggleGroupType = 'single' | 'multiple'
@@ -55,9 +55,9 @@ interface ToggleGroupImplProps {
    * @defaultValue true
    */
   rovingFocus?: boolean
-  loop?: RovingFocusGroupProps['loop']
-  orientation?: RovingFocusGroupProps['orientation']
-  dir?: RovingFocusGroupProps['dir']
+  loop?: RovingFocusGroupRootProps['loop']
+  orientation?: RovingFocusGroupRootProps['orientation']
+  dir?: RovingFocusGroupRootProps['dir']
 }
 
 export interface ToggleGroupContext {

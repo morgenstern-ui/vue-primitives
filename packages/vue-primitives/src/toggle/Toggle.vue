@@ -11,7 +11,7 @@ defineOptions({
 const props = withDefaults(defineProps<ToggleProps>(), {
   pressed: undefined,
   as: 'button',
-  disabled: false,
+  disabled: undefined,
 })
 const emit = defineEmits<ToggleEmits>()
 

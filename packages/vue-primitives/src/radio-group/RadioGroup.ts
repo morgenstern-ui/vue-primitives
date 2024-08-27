@@ -1,14 +1,14 @@
 import type { Ref } from 'vue'
 import { createContext } from '../hooks/index.ts'
-import type { RovingFocusGroupProps } from '../roving-focus/index.ts'
+import type { RovingFocusGroupRootProps } from '../roving-focus/index.ts'
 
 export interface RadioGroupProps {
   name?: string
   required?: boolean
   disabled?: boolean
-  dir?: RovingFocusGroupProps['dir']
-  orientation?: RovingFocusGroupProps['orientation']
-  loop?: RovingFocusGroupProps['loop']
+  dir?: RovingFocusGroupRootProps['dir']
+  orientation?: RovingFocusGroupRootProps['orientation']
+  loop?: RovingFocusGroupRootProps['loop']
   defaultValue?: string
   value?: string
 }

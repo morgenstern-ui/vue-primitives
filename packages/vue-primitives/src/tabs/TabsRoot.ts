@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 import { createContext } from '../hooks/index.ts'
-import type { RovingFocusGroupProps } from '../roving-focus/index.ts'
+import type { RovingFocusGroupRootProps } from '../roving-focus/index.ts'
 
 export interface TabsProps {
   /** The value for the selected tab, if controlled */
@@ -12,11 +12,11 @@ export interface TabsProps {
    * Mainly so arrow navigation is done accordingly (left & right vs. up & down)
    * @defaultValue horizontal
    */
-  orientation?: RovingFocusGroupProps['orientation']
+  orientation?: RovingFocusGroupRootProps['orientation']
   /**
    * The direction of navigation between toolbar items.
    */
-  dir?: RovingFocusGroupProps['dir']
+  dir?: RovingFocusGroupRootProps['dir']
   /**
    * Whether a tab is activated automatically or manually.
    * @defaultValue automatic

@@ -12,7 +12,7 @@ type MultipleValue = Exclude<ToggleGroupProps<'multiple'>['value'], undefined>
 type Value = T extends 'single' ? SingleValue : MultipleValue
 
 defineOptions({
-  name: 'ToggleGroupRoot',
+  name: 'ToggleGroup',
   inheritAttrs: false,
 })
 
