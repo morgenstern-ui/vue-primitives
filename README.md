@@ -1,5 +1,5 @@
-> [!NOTE]
-> This repository is a fork of [OkuUI](https://github.com/oku-ui/primitives) and serves as a staging area for migrating Vue components to Single File Components (SFC). All contributions and changes will be merged back into the original repository upon completion.
+> [!IMPORTANT]
+> This repository has moved to a new address: [perigee-ui/vue-primitives](https://github.com/perigee-ui/vue-primitives)
 
 ---
 
